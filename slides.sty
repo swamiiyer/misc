@@ -1,0 +1,66 @@
+\NeedsTeXFormat{LaTeX2e}[2005/12/01]
+
+\ProvidesPackage{slides}
+
+\RequirePackage{amsmath, amssymb, amsthm}
+\RequirePackage{csquotes}
+\RequirePackage{enumerate}
+\RequirePackage{framed}
+\RequirePackage{listings}
+\RequirePackage{makecell}
+\RequirePackage{mathtools}
+\RequirePackage{tikz}
+\RequirePackage{wrapfig}
+\RequirePackage{pifont}
+
+\usetikzlibrary{shapes.gates.logic.US,trees,positioning,arrows,shapes.multipart}
+\usecolortheme{dove}
+\useinnertheme{circles}
+\usefonttheme[onlymath]{serif}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{headline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=6ex]{secsubsec}%
+    \raggedright
+    \hspace*{1.5em}%
+    \normalsize
+    \ifx\insertsection\empty\else
+      \textbf{\insertsection\text{ }}%
+      \ifx\insertsubsection\empty\else
+        \textbf{$\bullet$\text{ }\insertsubsection}%
+      \fi
+    \fi
+    \hspace*{2em}%
+  \end{beamercolorbox}%
+  }%
+}
+\setbeamerfont{frametitle}{size=\normalsize}
+\setbeamertemplate{mini frames}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamercovered{transparent=15}
+
+\definecolor{lightgray}{RGB}{240,240,240}
+\definecolor{darkgreen}{RGB}{51,102,0}
+
+\lstset{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\footnotesize\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{darkgreen},
+  keywordstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\makeatletter
+\g@addto@macro\@listii{\topsep0.2cm}
+\g@addto@macro\@listii{\itemsep0.2cm}
+\makeatletter
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\carg}[1]{{\color{magenta} \textbf{#1}}}

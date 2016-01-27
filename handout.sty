@@ -1,0 +1,96 @@
+\NeedsTeXFormat{LaTeX2e}[2005/12/01]
+
+\ProvidesPackage{handout}
+
+\RequirePackage{amsmath, amssymb, amsthm}
+\RequirePackage{csquotes}
+\RequirePackage{enumerate}
+\RequirePackage[mathscr]{eucal}
+\RequirePackage{fancyhdr}
+\RequirePackage{framed}
+\RequirePackage[top=1in, bottom=1in, left=.5in, right=.5in]{geometry}
+\RequirePackage{makecell}
+\RequirePackage{marvosym}
+\RequirePackage[many]{tcolorbox}
+\RequirePackage{lastpage}
+\RequirePackage{latexsym}
+\RequirePackage{listings}
+\RequirePackage{mathtools}
+\RequirePackage{paralist}
+\RequirePackage{longtable}
+\RequirePackage{tabularx}
+\RequirePackage[hidelinks]{hyperref}
+
+\newcommand{\TL}[1]{\def \TL {#1}}
+\newcommand{\TM}[1]{\def \TM {#1}}
+\newcommand{\TR}[1]{\def \TR {#1}}
+\newcommand{\BL}[1]{\def \BL {#1}}
+\newcommand{\BM}[1]{\def \BM {#1}}
+
+\let\orighref\href
+\renewcommand{\href}[2]{\orighref{#1}{#2\textsuperscript{\Mundus}}}
+
+\pagestyle{fancy}
+\lhead{\textbf{\TL}}
+\chead{\textbf{\TM}}
+\rhead{\textbf{\TR}}
+\lfoot{\textbf{\BL}}
+\cfoot{\textbf{\BM}}
+\rfoot{\textbf{\thepage\ of \pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newcommand{\tbf}{\textbf}
+\newcommand{\tit}{\textit}
+\newcommand{\tsl}{\textsl}
+\newcommand{\tsc}{\textsc}
+\newcommand{\ttt}{\texttt}
+\newcommand{\trm}{\textrm}
+\newcommand{\tsf}{\textsf}
+\newcommand{\tup}{\textup}
+\newcommand{\mbf}{\mathbf}
+\providecommand{\mit}{\mathit}
+\newcommand{\msf}{\mathsf}
+\newcommand{\mrm}{\mathm}
+\newcommand{\mtt}{\mathtt}
+\newcommand{\Bold}[1]{\boldsymbol{#1}}
+\newcommand{\Cal}[1]{\mathcal{#1}}
+\newcommand{\DD}[1]{\mathbb{#1}}
+\newcommand{\Euler}[1]{\mathscr{#1}}
+\newcommand{\Frak}[1]{\mathfrak{#1}}
+\newcommand{\carg}[1]{{\color{magenta} \textbf{#1}}}
+
+\newcommand{\solbox}[2]{
+\begin{tcolorbox}[height={#1},colback=white]
+\begin{flushright}
+$\text{\ \ \ /\texttt{{#2}}}$
+\end{flushright}
+\end{tcolorbox}
+}
+
+\newcommand{\filledsolbox}[3]{
+\begin{tcolorbox}[height={#1},colback=white]
+\begin{flushright}
+$\text{\ \ \ /\texttt{{#2}}}$
+\end{flushright}
+{#3}
+\end{tcolorbox}
+}
+
+\theoremstyle{remark}
+\newtheorem{problem}{\normalfont \bfseries Problem}
+
+\definecolor{lightgray}{RGB}{240,240,240}
+\definecolor{darkgreen}{RGB}{51,102,0}
+
+\lstset{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\footnotesize\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{darkgreen},
+  keywordstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Usage: nupslides <filename>"
+    exit 1
+fi
+
+cat "$1.tex" | sed 's/8pt,a4paper,compress/8pt,a4paper,compress,handout/' > "$1_nup.tex"
+
+pdflatex "$1_nup.tex"
+pdflatex "$1_nup.tex"
+
+pdfnup --a4paper --nup 1x1 --delta "2mm 2mm" --scale 0.95 --frame true --suffix 1 "$1_nup.pdf"
+
+pdfnup --a4paper --nup 2x2 --delta "2mm 2mm" --scale 0.95 --frame true --suffix 4 "$1_nup.pdf"
+
+rm $1_nup.*
