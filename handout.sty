@@ -19,7 +19,9 @@
 \RequirePackage{paralist}
 \RequirePackage{longtable}
 \RequirePackage{tabularx}
+\RequirePackage{tikz}
 \RequirePackage[hidelinks]{hyperref}
+\RequirePackage{xspace}
 
 \newcommand{\TL}[1]{\def \TL {#1}}
 \newcommand{\TM}[1]{\def \TM {#1}}
@@ -27,8 +29,26 @@
 \newcommand{\BL}[1]{\def \BL {#1}}
 \newcommand{\BM}[1]{\def \BM {#1}}
 
-\let\orighref\href
-\renewcommand{\href}[2]{\orighref{#1}{#2\textsuperscript{\Mundus}}}
+\newcommand{\ExternalLink}{%
+    \tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{% 
+        \begin{scope}[x=1ex, y=1ex]
+            \clip (-0.1,-0.1) 
+                --++ (-0, 1.2) 
+                --++ (0.6, 0) 
+                --++ (0, -0.6) 
+                --++ (0.6, 0) 
+                --++ (0, -1);
+            \path[draw, 
+                line width = 0.5, 
+                rounded corners=0.5] 
+                (0,0) rectangle (1,1);
+        \end{scope}
+        \path[draw, line width = 0.5] (0.5, 0.5) 
+            -- (1, 1);
+        \path[draw, line width = 0.5] (0.6, 1) 
+            -- (1, 1) -- (1, 0.6);
+        }
+    }
 
 \pagestyle{fancy}
 \lhead{\textbf{\TL}}
@@ -60,25 +80,32 @@
 \newcommand{\Frak}[1]{\mathfrak{#1}}
 \newcommand{\carg}[1]{{\color{magenta} \textbf{#1}}}
 
-\newcommand{\solbox}[2]{
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand*\shadecircled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,fill=black!20,inner sep=2pt] (char) {#1};}}
+            
+\newcommand{\solbox}[1]{
 \begin{tcolorbox}[height={#1},colback=white]
-\begin{flushright}
-$\text{\ \ \ /\texttt{{#2}}}$
-\end{flushright}
+%\begin{flushright}
+%$\text{\ \ \ /\texttt{{#2}}}$
+%\end{flushright}
 \end{tcolorbox}
 }
 
-\newcommand{\filledsolbox}[3]{
+\newcommand{\filledsolbox}[2]{
 \begin{tcolorbox}[height={#1},colback=white]
-\begin{flushright}
-$\text{\ \ \ /\texttt{{#2}}}$
-\end{flushright}
-{#3}
+%\begin{flushright}
+%$\text{\ \ \ /\texttt{{#2}}}$
+%\end{flushright}
+{#2}
 \end{tcolorbox}
 }
 
 \theoremstyle{remark}
 \newtheorem{problem}{\normalfont \bfseries Problem}
+\newtheorem{solution}{\normalfont \bfseries Solution}
 
 \definecolor{lightgray}{RGB}{240,240,240}
 \definecolor{darkgreen}{RGB}{51,102,0}
@@ -94,3 +121,5 @@ $\text{\ \ \ /\texttt{{#2}}}$
 
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newcommand{\jmm}{\emph{j\xspace-\xspace-}\xspace}
