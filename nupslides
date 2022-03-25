@@ -15,3 +15,5 @@ pdfnup --a4paper --nup 1x1 --delta "2mm 2mm" --scale 0.95 --frame true --suffix 
 pdfnup --a4paper --nup 2x2 --delta "2mm 2mm" --scale 0.95 --frame true --suffix 4 "$1_nup.pdf"
 
 rm $1_nup.*
+
+
